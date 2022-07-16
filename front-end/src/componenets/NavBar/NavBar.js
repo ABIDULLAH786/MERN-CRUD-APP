@@ -1,81 +1,69 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
-    // This styling will be applied to a <NavLink> when the
-    // route that it links to is currently selected.
-    let activeStyle = {
-        textDecoration: "underline",
-    };
-
-    let activeClassName = "underline";
-
+const Navbar = () => {
     return (
-        <>
-            <nav>
-                {/* <ul>
-                    <li>
-                        <NavLink
-                            to="messages"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : undefined
-                            }
-                        >
-                            Messages
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="tasks"
-                            className={({ isActive }) =>
-                                isActive ? activeClassName : undefined
-                            }
-                        >
-                            Tasks
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="tasks">
-                            {({ isActive }) => (
-                                <span
-                                    className={
-                                        isActive ? activeClassName : undefined
-                                    }
-                                >
-                                    Tasks
-                                </span>
-                            )}
-                        </NavLink>
-                    </li>
-                </ul> */}
-            </nav>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 px-4">
-                <a class="navbar-brand" href="/">CRUD-APP</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container">
+                <NavLink className="navbar-brand" hrefLang="https://henok.us" to="/">
+                    MERN CRUD APP
+                </NavLink>
+                <button
+                    className="navbar-toggler collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mobileMenu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="toggler-icon top-bar"></span>
+                    <span className="toggler-icon middle-bar"></span>
+                    <span className="toggler-icon bottom-bar"></span>
                 </button>
-
-                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <Link className="nav-link" to={"/"}>
+                <div className="collapse navbar-collapse" id="mobileMenu">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <NavLink
+                                className="nav-link"
+                                activeClassName="active"
+                                to="/"
+                            >
                                 Home
-                            </Link>
+                            </NavLink>
                         </li>
-                        <li class="nav-item">
-                            <Link className="nav-link" to={"users"}>
-                                All Users
-                            </Link>
+                        <li className="nav-item">
+                            <NavLink
+                                className="nav-link"
+                                activeClassName="active"
+                                to="/products"
+                            >
+                                Products
+                            </NavLink>
                         </li>
-
+                        <li className="nav-item">
+                            <NavLink
+                                className="nav-link"
+                                activeClassName="active"
+                                to="/new"
+                            >
+                                Add New Product
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                className="nav-link"
+                                activeClassName="active"
+                                to="/search"
+                            >
+                                Search
+                            </NavLink>
+                        </li>
                     </ul>
-                    <form action="/table" method="post" class="form-inline my-2 my-lg-0 d-flex justify-content-between ">
-                        <input class="form-control mr-sm-2 mx-2" name="name" type="search" placeholder="Search User By Name" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
-                    </form>
                 </div>
-            </nav>
-        </>
+            </div>
+        </nav>
     );
-}
+};
+
+export default Navbar;
