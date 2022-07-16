@@ -14,4 +14,5 @@ const connectDatabase = () => {
         console.log(e)
     } )
 }
+console.log("Database connection is successfully done...")
 module.exports = connectDatabase;

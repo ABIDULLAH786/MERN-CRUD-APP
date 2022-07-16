@@ -5,6 +5,9 @@ app.use(express.json())
 app.use(cors())
 
 
+const ProductRouter = require("./routes/products")
+app.use("/products",ProductRouter);
+
 const UserRouter = require("./routes/users")
 app.use("/users",UserRouter);
 
