@@ -6,8 +6,19 @@ const Products = () => {
 
     const [products, setProducts] = useState()
     useEffect(() => {
+        const token = localStorage.getItem('user');
+
         const getProducts = async () => {
-            const response = await axios.get(`${SERVER_LINK}/products`)
+            const requestOptions = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+
+                },
+
+            };
+            const response = await axios.get(`${SERVER_LINK}/products`, requestOptions)
             setProducts(response.data.products)
         }
         getProducts();

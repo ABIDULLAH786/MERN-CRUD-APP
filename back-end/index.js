@@ -7,10 +7,10 @@ app.use(express.json())
 app.use(cors())
 
 
-const ProductRouter = require("./routes/products")
+const ProductRouter = require("./routes/productsRoutes")
 app.use("/products", ProductRouter);
 
-const UserRouter = require("./routes/users")
+const UserRouter = require("./routes/usersRoutes")
 const authToken = require('./middlewares/authenticateToken')
 const { response } = require('express')
 app.use("/users", UserRouter);

@@ -3,8 +3,10 @@ import Signin from "../Signin/Signin";
 
 
 const useAuth = () => {
-    const user = { login: false };
-    return user && user.login
+    const token = localStorage.getItem('user');
+    // console.log(token)
+    // const user = { login: false };
+    return token && token.length != 0;
 }
 
 const ProtectedRoute = () => {

@@ -18,14 +18,26 @@ const authToken = async (req, res, next) => {
                 },
             ],
         });
+        return;
     }
 
     // Authenticate token
     try {
-        const user = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        console.log(user);
-        req.user = user.email;
-        next();
+        const user = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+        if (user) {
+            console.log(user);
+            next();
+        }
+        else res.status(403).json({
+            errors: [
+                {
+                    msg: "Invalid token",
+                },
+            ],
+        });
+
+
+        // req.user = user.email;
     } catch (error) {
         res.status(403).json({
             errors: [

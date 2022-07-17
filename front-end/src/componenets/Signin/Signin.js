@@ -8,10 +8,7 @@ const Signin = () => {
 
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
-        console.log(`
-      email: ${email}
-      password: ${password}
-    `);
+
 
         event.preventDefault();
         const requestOptions = {
@@ -23,9 +20,9 @@ const Signin = () => {
         const response = await fetch(`${SERVER_LINK}/users/signin`, requestOptions);
         const data = await response.json();
 
-        console.log(data.accessToken)
-        if (response.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(response.data));
+        if (data.accessToken) {
+            localStorage.setItem("user", data.accessToken);
+
         }
         if (response.status === 200) {
             setEmail("")

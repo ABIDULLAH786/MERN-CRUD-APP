@@ -6,16 +6,20 @@ const ProductSchema = new mongoose.Schema(
             required: [true, "please Enter Name"],
             maxlength: [30, "Product title cannot exceed 30 charachters"],
         },
-        description:{
+        description: {
             type: String,
             required: [true, "Description is required"]
         },
-        price:{
+        price: {
             type: Number,
             required: true
+        },
+        image: {
+            type: String,
+            default: ""
         }
 
 
     }
 )
-module.exports = mongoose.model('Product',ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema);
