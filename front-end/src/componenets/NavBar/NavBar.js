@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -60,6 +60,10 @@ const Navbar = () => {
                             </NavLink>
                         </li> */}
                     </ul>
+                    <div class="d-flex">
+                        <Link to="signin" class="btn btn-primary" type="submit">Login</Link>
+                        <Link to="signup" class="btn btn-primary mx-2" type="submit">Signup</Link>
+                    </div>
                 </div>
             </div>
         </nav>

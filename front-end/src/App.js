@@ -8,6 +8,8 @@ import AddProduct from './componenets/AddProduct/AddProduct';
 import SearchProduct from './componenets/SearchProduct/SearchProduct';
 import DeleteProduct from './componenets/DeleteProduct/DeleteProduct';
 import UpdateProduct from './componenets/UpdateProduct/UpdateProduct';
+import Signup from './componenets/Signup/Signup';
+import Signin from './componenets/Signin/Signin';
 
 function App() {
   return (
@@ -20,8 +22,12 @@ function App() {
         <Route path="/product/edit/:id" element={<UpdateProduct />} />
         <Route path="/new" element={<AddProduct />} />
         <Route path="/search" element={<SearchProduct />} />
-        
-        
+
+
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+
+
       </Routes>
       {/* <Form /> */}
 
