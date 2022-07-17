@@ -8,7 +8,8 @@ const DeleteProduct = () => {
     let [product, setProduct] = useState();
 
     async function deleteProductById() {
-        let response = await axios.get(`${SERVER_LINK}/products/remove/${id}`)
+        let response = await fetch(`${SERVER_LINK}/products/remove/${id}`)
+        console.log(response)
         navigate("/products")
     }
 

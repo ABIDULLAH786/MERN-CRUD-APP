@@ -9,7 +9,7 @@ router.route("/search/:id").get(findProductById);
 // router.route("/findByName/:name").get(findProductByName);
 router.route("/create").post(createProduct);
 router.route("/update/:id").patch(updateProduct);
-router.route("/remove/:id").delete(removeProduct);
+router.route("/remove/:id").get(removeProduct);
 
 
 module.exports = router;

@@ -20,7 +20,7 @@ exports.getAllProducts = async (req, res, next) => {
 
 // remove product
 exports.removeProduct = async (req, res, next) => {
-
+    console.log("here in remove");
     ProductSchema.findById(req.params.id, (err, result) => {
         if (!result) {
             res.status(404).send("Product Not Found");
@@ -65,8 +65,6 @@ exports.findProductByName = async (req, res, next) => {
 exports.updateProduct = async (req, res) => {
     let { title, price, description } = req.body;
     let id = req.params.id;
-    console.log(req.body);
-
 
     ProductSchema.findByIdAndUpdate({ _id: id }, { $set: { title, price, description } })
         .then(function () {
@@ -75,13 +73,4 @@ exports.updateProduct = async (req, res) => {
         .catch(function (err) {
             res.status(422).send("Product update failed.");
         });
-
-
-
-    console.log("---------------------")
-
-    console.log("Here is update product API")
-    const result = await ProductSchema.findById(req.params.id)
-    console.log(result)
-
 }

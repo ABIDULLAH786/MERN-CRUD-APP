@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SERVER_LINK } from "../Constants";
 
 const UpdateProduct = (props) => {
@@ -9,7 +9,10 @@ const UpdateProduct = (props) => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
-    console.log(id)
+
+    let navigate = useNavigate();
+
+
     function fillData(data) {
         setProductId(data._id)
         setTitle(data.title)
@@ -20,7 +23,6 @@ const UpdateProduct = (props) => {
         async function getProduct() {
             try {
                 const response = await axios.get(`${SERVER_LINK}/products/search/${id}`)
-                console.log(response.data.product)
                 fillData(response.data.product);
             } catch (err) {
                 console.log(err)
@@ -38,9 +40,9 @@ const UpdateProduct = (props) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ _id: productId, title: title, price: price, description: description })
         };
-        const response = await axios.patch(`${SERVER_LINK}/products/update/${id}`, requestOptions);
-
-        console.log(response)
+        const response = await fetch(`${SERVER_LINK}/products/update/${id}`, requestOptions);
+        if (response.status === 200)
+            navigate("/products");
 
     }
     return (
