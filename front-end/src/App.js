@@ -6,6 +6,8 @@ import NavBar from './componenets/NavBar/NavBar';
 import Products from './componenets/Products/Products';
 import AddProduct from './componenets/AddProduct/AddProduct';
 import SearchProduct from './componenets/SearchProduct/SearchProduct';
+import DeleteProduct from './componenets/DeleteProduct/DeleteProduct';
+import UpdateProduct from './componenets/UpdateProduct/UpdateProduct';
 
 function App() {
   return (
@@ -14,8 +16,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/product/remove/:id" element={<DeleteProduct />} />
+        <Route path="/product/edit/:id" element={<UpdateProduct />} />
         <Route path="/new" element={<AddProduct />} />
         <Route path="/search" element={<SearchProduct />} />
+        
         
       </Routes>
       {/* <Form /> */}

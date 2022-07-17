@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const ProductSchema = require("../models/ProductSchema");
 
 exports.createProduct = async (req, res, next) => {
@@ -10,7 +11,6 @@ exports.createProduct = async (req, res, next) => {
 }
 
 exports.getAllProducts = async (req, res, next) => {
-    console.log("Here is all product API")
     const AllProducts = await ProductSchema.find();
     res.status(200).json({
         success: true,
@@ -20,7 +20,6 @@ exports.getAllProducts = async (req, res, next) => {
 
 // remove product
 exports.removeProduct = async (req, res, next) => {
-    console.log("Here is remove product API")
 
     ProductSchema.findById(req.params.id, (err, result) => {
         if (!result) {
@@ -39,15 +38,23 @@ exports.removeProduct = async (req, res, next) => {
 
 // find/search product by id
 exports.findProductById = async (req, res, next) => {
-    const product = await ProductSchema.findById(req.params.id);
-    res.status(200).json({
-        success: true,
-        product: product
-    })
+    try {
+        const product = await ProductSchema.findById(req.params.id);
+        // res.status(200).json(product)
+
+        res.status(200).json({
+            success: true,
+            product: product
+        })
+    } catch (err) {
+        console.log(err)
+    }
+
+
 }
 exports.findProductByName = async (req, res, next) => {
     const { name } = req.params;
-    const product = await ProductSchema.find({ name: name});
+    const product = await ProductSchema.find({ name: name });
     res.status(200).json({
         success: true,
         product: product
@@ -55,17 +62,26 @@ exports.findProductByName = async (req, res, next) => {
 }
 
 // Update Product
-exports.updateProduct = async (req, res, next) => {
+exports.updateProduct = async (req, res) => {
+    let { title, price, description } = req.body;
+    let id = req.params.id;
+    console.log(req.body);
 
-    ProductSchema.findById(req.params.id, async (err, result) => {
-        if (!result) {
-            res.status(404).send(`Product Not Found`);
-        } else {
-            const product = await ProductSchema.findByIdAndUpdate(req.params.id,req.body);
-            res.status(200).json("product Updated")
-        }
-    });
+
+    ProductSchema.findByIdAndUpdate({ _id: id }, { $set: { title, price, description } })
+        .then(function () {
+            res.json("Product updated");
+        })
+        .catch(function (err) {
+            res.status(422).send("Product update failed.");
+        });
+
+
+
+    console.log("---------------------")
 
     console.log("Here is update product API")
+    const result = await ProductSchema.findById(req.params.id)
+    console.log(result)
 
 }
