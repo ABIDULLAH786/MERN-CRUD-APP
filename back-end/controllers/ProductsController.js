@@ -2,16 +2,32 @@ const { default: mongoose } = require("mongoose");
 const ProductSchema = require("../models/ProductSchema");
 
 exports.createProduct = async (req, res, next) => {
+    // if (!req.body.title || !req.body.price || !req.body.description) {
+    //     res.status(400).json("Please fill product details")
+    //     return;
+    // }
+
     const { title, description, price } = req.body;
-    const Product = await ProductSchema.create({ title, description, price });
-    res.status(200).json({
-        success: true,
-        Product
-    })
+    const { id } = req.body;
+    console.log("User ID: ", id);
+    try {
+        const product = await ProductSchema.create({ userId: id, title, description, price });
+        console.log(product)
+        res.status(200).json({
+            success: true,
+            product
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({
+            success: false,
+            msg: "The Product Creation Failed"
+        })
+    }
 }
 // Get All Products 
 exports.getAllProducts = async (req, res, next) => {
-    const AllProducts = await ProductSchema.find();
+    const AllProducts = await ProductSchema.find().populate("userId");
     res.status(200).json({
         success: true,
         products: AllProducts

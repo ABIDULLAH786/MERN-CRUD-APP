@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 const ProductSchema = new mongoose.Schema(
     {
+        userId: {
+            required: true,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "users"
+        },
         title: {
             type: String,
             required: [true, "please Enter Name"],

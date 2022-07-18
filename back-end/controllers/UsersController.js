@@ -12,7 +12,9 @@ async function authenticate(req) {
         if (match) {
             // req.session.uid = user._id;
             // isCurrentlySignIn = true;
-            return true;
+            // console.log(user._id)
+
+            return user._id;
         }
     } else {
         console.log("Please enter a valid name or user name")
@@ -31,27 +33,27 @@ exports.getAllUsers = async (req, res) => {
 }
 exports.Login = async (req, res) => {
     console.log("here in signin api");
+    // this will return user id 
     let isfound = await authenticate(req);
+    console.log(isfound)
     if (isfound) {
         // req.session.isAuth = true;
         const accessToken = jwt.sign(
-            { email: req.email },
+            { id: isfound },
             process.env.JWT_SECRET_KEY,
             {
                 expiresIn: process.env.JWT_EXPIRES_TIME
             }
         );
 
-        res.status(200).json({ accessToken, message: "Login Done" })
+        res.status(200).json({ accessToken, uId: isfound, message: "Login Done" })
     }
     else
         res.status(400).json({ message: "Login Done" })
 }
 
 exports.Logout = async (req, res) => {
-    req.session.destroy();
-    isCurrentlySignIn = false;
-    res.redirect("/signin");
+
 }
 exports.Register = async (req, res) => {
     const { name, email, password } = req.body
