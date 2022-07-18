@@ -19,10 +19,10 @@ const Signin = () => {
         };
         const response = await fetch(`${SERVER_LINK}/users/signin`, requestOptions);
         const data = await response.json();
-
+        console.log(data)
         if (data.accessToken) {
             localStorage.setItem("user", data.accessToken);
-
+            localStorage.setItem("id", data.uId);
         }
         if (response.status === 200) {
             setEmail("")

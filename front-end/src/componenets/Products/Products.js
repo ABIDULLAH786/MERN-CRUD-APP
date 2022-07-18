@@ -20,6 +20,8 @@ const Products = () => {
             };
             const response = await axios.get(`${SERVER_LINK}/products`, requestOptions)
             setProducts(response.data.products)
+            console.log(response.data.products);
+            console.log(response.data.products.userId)
         }
         getProducts();
     }, [])
@@ -59,6 +61,9 @@ const Products = () => {
                                             Delete
                                         </Link>
                                     </div>
+                                </div>
+                                <div className="card-footer">
+                                    <b>Created BY:</b> {product.userId.name.toUpperCase()}
                                 </div>
                             </div>
                         </div>
