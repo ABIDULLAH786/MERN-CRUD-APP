@@ -9,7 +9,7 @@ exports.createProduct = async (req, res, next) => {
         Product
     })
 }
-
+// Get All Products 
 exports.getAllProducts = async (req, res, next) => {
     const AllProducts = await ProductSchema.find();
     res.status(200).json({

@@ -1,5 +1,6 @@
 import { Navigate, Outlet, Route } from "react-router-dom";
 import Signin from "../Signin/Signin";
+import checkUser from "./checkuser";
 
 
 const useAuth = () => {
@@ -7,6 +8,7 @@ const useAuth = () => {
     // console.log(token)
     // const user = { login: false };
     return token && token.length != 0;
+
 }
 
 const ProtectedRoute = () => {
@@ -14,8 +16,7 @@ const ProtectedRoute = () => {
 
     return (
         <>
-            {isAuth ? <Outlet /> : <Navigate to="/signin" />
-            }
+            {isAuth ? <Outlet /> : <Navigate to="/signin" />}
         </>
     )
 }

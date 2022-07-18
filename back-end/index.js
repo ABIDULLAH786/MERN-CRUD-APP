@@ -11,8 +11,6 @@ const ProductRouter = require("./routes/productsRoutes")
 app.use("/products", ProductRouter);
 
 const UserRouter = require("./routes/usersRoutes")
-const authToken = require('./middlewares/authenticateToken')
-const { response } = require('express')
 app.use("/users", UserRouter);
 
 
@@ -23,11 +21,23 @@ function authenticateToken(req, res, next) {
 
     if (token == null) return res.sendStatus(401);
     console.log(token)
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
-    console.log(decoded);
-    res.json({
-        msg: "sahi"
-    })
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
+
+        console.log(decoded);
+        next();
+
+
+    } catch (err) {
+        console.log(err);
+        res.status(403).json({
+            errors: [
+                {
+                    msg: "Invalid token",
+                },
+            ],
+        });
+    }
 }
 
 app.get("/check", authenticateToken, (req, res, next) => {

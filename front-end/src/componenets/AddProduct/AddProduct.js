@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SERVER_LINK } from "../Constants";
-
+import axios from "axios"
 const AddProduct = () => {
 
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
+    const [imageName, setImageName] = useState();
+    const [image, setImage] = useState();
+    const [imagePreview, setImagePreview] = useState();
+
+
 
     const handleSubmit = async (event) => {
         console.log(`
@@ -21,6 +26,7 @@ const AddProduct = () => {
             body: JSON.stringify({ title: title, price: price, description: description })
         };
         const response = await fetch(`${SERVER_LINK}/products/create`, requestOptions);
+
         const data = await response.json();
         console.log(data.id);
 
@@ -34,7 +40,7 @@ const AddProduct = () => {
             <div>
 
                 <div className="">
-                    <form onSubmit={handleSubmit} className="px-4 py-3">
+                    <form onSubmit={handleSubmit} multipart="/form-data" className="px-4 py-3">
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
                             <input type="text"
@@ -65,6 +71,8 @@ const AddProduct = () => {
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </div>
+
+
 
                         <button className="btn btn-primary w-100">Add Product</button>
                     </form>

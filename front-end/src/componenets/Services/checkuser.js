@@ -1,11 +1,18 @@
 import axios from "axios";
 import { SERVER_LINK } from "../Constants";
-import authHeader from "./header.auth";
 
 export default async function checkUser() {
-    const response = await axios.get(`${SERVER_LINK}/check`, { headers: authHeader() });
-    const data = await response.json();
-    if (response.status === 200)
-        return true;
-    else return false;
+    console.log("here in checker")
+    const response = await axios.get(`${SERVER_LINK}/check`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("user")}`
+        }
+    });
+    if (response.status == 403) {
+        localStorage.setItem("user", 0);
+        console.log("Not Authenticated")
+        return false;
+    }
+    return true;
 }
