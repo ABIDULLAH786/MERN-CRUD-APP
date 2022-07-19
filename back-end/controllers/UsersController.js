@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 
 async function authenticate(req) {
     const { email, password } = req.body;
-    let errmsg = ""
     const user = await UserSchema.findOne({ email: email.trim() });
     if (user) {
         const match = await bcrypt.compare(password, user.password);
@@ -18,7 +17,6 @@ async function authenticate(req) {
         }
     } else {
         console.log("Please enter a valid name or user name")
-        errmsg = "Please enter a valid name or user name";
         return false;
     }
 
@@ -32,10 +30,8 @@ exports.getAllUsers = async (req, res) => {
     })
 }
 exports.Login = async (req, res) => {
-    console.log("here in signin api");
     // this will return user id 
     let isfound = await authenticate(req);
-    console.log(isfound)
     if (isfound) {
         // req.session.isAuth = true;
         const accessToken = jwt.sign(
@@ -46,10 +42,10 @@ exports.Login = async (req, res) => {
             }
         );
 
-        res.status(200).json({ accessToken, uId: isfound, message: "Login Done" })
+        res.status(200).json({ accessToken, id: isfound, message: "Login Done" })
     }
     else
-        res.status(400).json({ message: "Login Done" })
+        res.status(400).json({ message: "Invalid Data Entered" })
 }
 
 exports.Logout = async (req, res) => {

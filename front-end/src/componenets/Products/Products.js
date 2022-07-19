@@ -20,8 +20,6 @@ const Products = () => {
             };
             const response = await axios.get(`${SERVER_LINK}/products`, requestOptions)
             setProducts(response.data.products)
-            console.log(response.data.products);
-            console.log(response.data.products.userId)
         }
         getProducts();
     }, [])

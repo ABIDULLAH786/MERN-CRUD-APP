@@ -13,12 +13,6 @@ const AddProduct = () => {
 
 
     const handleSubmit = async (event) => {
-        console.log("id ==== " + localStorage.getItem("id"))
-        console.log(`
-      title: ${title}
-      price: ${price}
-      Descrioption: ${description}
-    `);
 
         event.preventDefault();
 
@@ -27,14 +21,11 @@ const AddProduct = () => {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": "Bearer" + localStorage.getItem("user")
             },
             body: JSON.stringify({ id: localStorage.getItem("id"), title: title, price: price, description: description })
         };
-        const response = await fetch(`${SERVER_LINK}/products/create`, requestOptions);
+        await fetch(`${SERVER_LINK}/products/create`, requestOptions);
 
-        const data = await response.json();
-        console.log(data);
 
         setTitle("")
         setPrice(0)

@@ -19,16 +19,14 @@ const Signin = () => {
         };
         const response = await fetch(`${SERVER_LINK}/users/signin`, requestOptions);
         const data = await response.json();
-        console.log(data)
         if (data.accessToken) {
             localStorage.setItem("user", data.accessToken);
-            localStorage.setItem("id", data.uId);
+            localStorage.setItem("id", data.id);
         }
         if (response.status === 200) {
-            setEmail("")
-            setPassword("")
-            window.location.reload();
             navigate('/')
+
+            window.location.reload();
         } else {
             alert(response.status + "\n" + response.statusText)
         }
