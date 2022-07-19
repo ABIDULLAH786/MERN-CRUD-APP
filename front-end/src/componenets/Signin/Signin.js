@@ -27,6 +27,7 @@ const Signin = () => {
         if (response.status === 200) {
             setEmail("")
             setPassword("")
+            window.location.reload();
             navigate('/')
         } else {
             alert(response.status + "\n" + response.statusText)

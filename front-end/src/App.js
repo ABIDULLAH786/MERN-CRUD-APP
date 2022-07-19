@@ -1,5 +1,6 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes, NavLink } from 'react-router-dom';
+
 import Form from './componenets/form';
 import Home from './componenets/Home/Home';
 import NavBar from './componenets/NavBar/NavBar';
@@ -11,10 +12,12 @@ import UpdateProduct from './componenets/UpdateProduct/UpdateProduct';
 import Signup from './componenets/Signup/Signup';
 import Signin from './componenets/Signin/Signin';
 import ProtectedRoute from './componenets/Services/ProtectedRoutes';
+import AuthService from './componenets/Services/auth.services';
 function App() {
   return (
     <div>
       <NavBar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route element={<ProtectedRoute />}>
@@ -33,7 +36,7 @@ function App() {
       </Routes>
       {/* <Form /> */}
 
-    </div>
+    </div >
   );
 }
 
