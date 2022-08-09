@@ -14,7 +14,10 @@ const UserRouter = require("./routes/usersRoutes")
 app.use("/users", UserRouter);
 
 app.get("/test", (req, res, next) => {
-    res.send("Connection done");
+    res.send("Tested Successfully");
+})
+app.get("/", (req, res, next) => {
+    res.send("Welcome to MERN Crud App Backend");
 })
 function authenticateToken(req, res, next) {
 
