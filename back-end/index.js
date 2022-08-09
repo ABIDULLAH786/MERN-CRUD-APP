@@ -14,7 +14,7 @@ const UserRouter = require("./routes/usersRoutes")
 app.use("/users", UserRouter);
 
 app.get("/test", (req, res, next) => {
-    res.send("Tested Successfully");
+    res.send("Tested Successfully ");
 })
 app.get("/", (req, res, next) => {
     res.send("Welcome to MERN Crud App Backend");
