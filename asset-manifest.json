@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MERN-CRUD-APP/static/css/main.e6c13ad2.css",
-    "main.js": "/MERN-CRUD-APP/static/js/main.9d70bf97.js",
-    "static/js/787.3b96a754.chunk.js": "/MERN-CRUD-APP/static/js/787.3b96a754.chunk.js",
+    "main.js": "/MERN-CRUD-APP/static/js/main.c864a48f.js",
+    "static/js/787.8c2f9fc0.chunk.js": "/MERN-CRUD-APP/static/js/787.8c2f9fc0.chunk.js",
     "index.html": "/MERN-CRUD-APP/index.html",
     "main.e6c13ad2.css.map": "/MERN-CRUD-APP/static/css/main.e6c13ad2.css.map",
-    "main.9d70bf97.js.map": "/MERN-CRUD-APP/static/js/main.9d70bf97.js.map",
-    "787.3b96a754.chunk.js.map": "/MERN-CRUD-APP/static/js/787.3b96a754.chunk.js.map"
+    "main.c864a48f.js.map": "/MERN-CRUD-APP/static/js/main.c864a48f.js.map",
+    "787.8c2f9fc0.chunk.js.map": "/MERN-CRUD-APP/static/js/787.8c2f9fc0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.9d70bf97.js"
+    "static/js/main.c864a48f.js"
   ]
 }
