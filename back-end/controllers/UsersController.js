@@ -53,8 +53,6 @@ exports.Logout = async (req, res) => {
 }
 exports.Register = async (req, res) => {
     const { name, email, password } = req.body
-    console.log(password)
-    console.log("Here in register page");
     const findUser = UserSchema.findOne({ email })
     if (findUser.length != 0) {
 
