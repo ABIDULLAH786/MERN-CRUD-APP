@@ -9,8 +9,8 @@ const DeleteProduct = () => {
 
     async function deleteProductById() {
         let response = await fetch(`${SERVER_LINK}/products/remove/${id}`)
-        console.log(response)
-        navigate("/products")
+        if (response.status === 200)
+            navigate("/products")
     }
 
     function backToProductPage() {
@@ -32,7 +32,6 @@ const DeleteProduct = () => {
 
     return (
         <div className="container col-md-4 col-sm-4 col-xs-12 col-lg-4 my-3 ">
-            <h1></h1>
             {product && <div className="card">
                 <div className="card-header">
                     <h3 className="card-title text-center">

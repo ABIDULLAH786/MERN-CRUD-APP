@@ -16,12 +16,12 @@ const Home = () => {
                     <b>Database</b>: MongoDB
                 </p>
                 <p>
-                    <b>Developed By</b>: Abidullah
-                    <p>
+                    <b>Developed By</b>: Abidullah <br />
+                    <span>
                         <a href={link} target={target}>
                             Github Profile
                         </a>
-                    </p>
+                    </span>
                 </p>
             </div>
         </div>

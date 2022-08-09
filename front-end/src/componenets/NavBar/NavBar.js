@@ -43,8 +43,7 @@ const Navbar = () => {
 
                             <li className="nav-item">
                                 <NavLink
-                                    className="nav-link"
-                                    activeClassName="active"
+                                    className={({ isActive }) => (isActive ? 'active nav-link' : "nav-link")}
                                     to="/"
                                 >
                                     Home
@@ -53,8 +52,7 @@ const Navbar = () => {
 
                             <li className="nav-item">
                                 <NavLink
-                                    className="nav-link"
-                                    activeClassName="active"
+                                    className={({ isActive }) => (isActive ? 'active nav-link' : "nav-link")}
                                     to="/products"
                                 >
                                     Products
@@ -62,8 +60,7 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item">
                                 <NavLink
-                                    className="nav-link"
-                                    activeClassName="active"
+                                    className={({ isActive }) => (isActive ? 'active nav-link' : "nav-link")}
                                     to="/new"
                                 >
                                     Add New Product
