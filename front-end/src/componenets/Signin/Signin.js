@@ -9,7 +9,6 @@ const Signin = () => {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
 
-
         event.preventDefault();
         const requestOptions = {
             method: 'POST',

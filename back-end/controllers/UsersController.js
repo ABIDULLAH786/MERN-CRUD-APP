@@ -81,7 +81,6 @@ exports.Register = async (req, res) => {
             });
 
         // sendToken(userCreated, 200, res)
-        console.log(userCreated)
 
     }
     else {

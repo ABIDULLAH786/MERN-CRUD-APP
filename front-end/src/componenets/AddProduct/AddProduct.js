@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SERVER_LINK } from "../Constants";
-import axios from "axios"
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
 
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
-    const [imageName, setImageName] = useState();
-    const [image, setImage] = useState();
-    const [imagePreview, setImagePreview] = useState();
 
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
 
@@ -24,9 +21,9 @@ const AddProduct = () => {
             },
             body: JSON.stringify({ id: localStorage.getItem("id"), title: title, price: price, description: description })
         };
-        await fetch(`${SERVER_LINK}/products/create`, requestOptions);
-
-
+        const response = await fetch(`${SERVER_LINK}/products/create`, requestOptions);
+        if (response.status === 200)
+            navigate("/products")
         setTitle("")
         setPrice(0)
         setDescription("")

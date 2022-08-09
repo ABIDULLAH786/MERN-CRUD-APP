@@ -81,15 +81,15 @@ const Navbar = () => {
 
                         </ul>
                     )}
-                    <div class="d-flex">
+                    <div className="d-flex">
                         {currentUser ? (
                             <Link to="signin" onClick={logOut}
-                                class="btn btn-primary" type="submit">Logout</Link>
+                                className="btn btn-primary" type="submit">Logout</Link>
                         ) : (
                             <div>
-                                <Link to="signin" class="btn btn-primary"
+                                <Link to="signin" className="btn btn-primary"
                                     type="submit">Login</Link>
-                                <Link to="signup" class="btn btn-primary mx-2"
+                                <Link to="signup" className="btn btn-primary mx-2"
                                     type="submit">Signup</Link>
                             </div>
                         )}
