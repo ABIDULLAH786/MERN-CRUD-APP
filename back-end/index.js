@@ -13,7 +13,9 @@ app.use("/products", ProductRouter);
 const UserRouter = require("./routes/usersRoutes")
 app.use("/users", UserRouter);
 
-
+app.get("/test", (req, res, next) => {
+    res.send("Connection done");
+})
 function authenticateToken(req, res, next) {
 
     const authHeader = req.headers['authorization'];
