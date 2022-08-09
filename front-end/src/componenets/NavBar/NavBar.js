@@ -64,15 +64,6 @@ const Navbar = () => {
                                 <NavLink
                                     className="nav-link"
                                     activeClassName="active"
-                                    to="/productTableView"
-                                >
-                                    Table View
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    className="nav-link"
-                                    activeClassName="active"
                                     to="/new"
                                 >
                                     Add New Product
